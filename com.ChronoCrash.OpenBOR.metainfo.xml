@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>com.ChronoCrash.OpenBOR</id>
+  <launchable type="desktop-id">com.ChronoCrash.OpenBOR.desktop</launchable>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>BSD-3-Clause</project_license>
+  <name>OpenBOR</name>
+  <summary>OpenBOR is the ultimate 2D side scrolling engine for beat em' ups, shooters, and more!</summary>
+  <description>
+    <p>OpenBOR is the ultimate 2D side scrolling engine for beat em' ups, shooters, and more! </p>
+  </description>
+  <url type="homepage">https://purei.org/</url>
+  <url type="bugtracker">https://github.com/jpd002/Play-/issues</url>
+<!--
+  <screenshots>
+    <screenshot type="default"><image>https://purei.org/screenshots/i_000144.png</image></screenshot>
+    <screenshot><image>https://purei.org/screenshots/i_000145.png</image></screenshot>
+    <screenshot><image>https://purei.org/screenshots/i_000120.png</image></screenshot>
+    <screenshot><image>https://purei.org/screenshots/i_000127.png</image></screenshot>
+    <screenshot><image>https://purei.org/screenshots/i_000124.png</image></screenshot>
+    <screenshot><image>https://purei.org/screenshots/i_000087.png</image></screenshot>
+    <screenshot><image>https://purei.org/screenshots/i_000088.png</image></screenshot>
+    <screenshot><image>https://purei.org/screenshots/i_000089.png</image></screenshot>
+  </screenshots>
+-->
+  <releases>
+    <release date="2022-03-01" version="0.50"/>
+  </releases>
+  <developer_name>Jean-Philip Desjardins</developer_name>
+  <content_rating type="oars-1.1"/>
+</component>

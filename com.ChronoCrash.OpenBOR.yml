@@ -1,0 +1,58 @@
+app-id: com.ChronoCrash.OpenBOR
+runtime: org.freedesktop.Platform
+runtime-version: '21.08'
+sdk: org.freedesktop.Platform
+command: OpenBOR
+#rename-desktop-file: Play.desktop
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=x11
+  - --filesystem=host:ro
+  - --device=all
+  - --socket=pulseaudio
+modules:
+  #- "shared-modules/glu/glu-9.json"
+  #- name: libevdev
+    #buildsystem: meson
+    #config-opts:
+      #- -Dtests=disabled
+      #- -Ddocumentation=disabled
+    #cleanup:
+      #- /bin
+      #- /include
+      #- /lib/pkgconfig
+      #- /share
+    #sources:
+      #- type: archive
+        #url: https://www.freedesktop.org/software/libevdev/libevdev-1.12.1.tar.xz
+        #sha256: 1dbba41bc516d3ca7abc0da5b862efe3ea8a7018fa6e9b97ce9d39401b22426c
+        #x-checker-data:
+          #type: anitya
+          #project-id: 20540
+          #stable-only: true
+          #url-template: https://www.freedesktop.org/software/libevdev/libevdev-$version.tar.xz
+
+  - name: OpenBOR
+    buildsystem: simple
+    builddir: true
+    subdir: engine
+    build-commands:
+      #- sed -i 's/\[ $LNXDEV \]/\[ $LNXDEV \]; set -vx/' build.sh
+      - |
+        { [ $FLATPAK_ARCH = x86_64 ] && arch=amd64; } || { [ $FLATPAK_ARCH = i386 ] && arch=x86; }
+        CFLAGS=-Wno-deprecated-declarations ./build.sh 4 $arch || true
+    post-install:
+      - install -Dm644 ../com.ChronoCrash.OpenBOR.metainfo.xml ${FLATPAK_DEST}/share/metainfo/com.ChronoCrash.OpenBOR.metainfo.xml
+      - mv releases/LINUX_AMD64/OpenBOR /app/bin
+      #- sed -i 's/^Icon=xemu/Icon=org.purei.Play/' /app/share/applications/Play.desktop
+      #- mv /app/share/icons/hicolor/1024x1024/apps/Play.png /app/share/icons/hicolor/1024x1024/apps/org.purei.Play.png
+      #- mv /app/share/icons/hicolor/scalable/apps/Play.svg /app/share/icons/hicolor/scalable/apps/org.purei.Play.svg
+    sources:
+      - type: git
+        url: https://github.com/DCurrent/openbor
+        #branch: master
+        #commit: a37d98b6f2b6f56bf2d60ce693b3863941743a63
+
+      - type: file
+        path: com.ChronoCrash.OpenBOR.metainfo.xml
