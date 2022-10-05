@@ -1,0 +1,34 @@
+app-id: org.vita3k.Vita3K
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: Vita3K
+rename-desktop-file: vita3k.desktop
+finish-args:
+  - --device=all
+  - --filesystem=host:ro
+  - --socket=pulseaudio
+  - --socket=x11
+  - --share=ipc
+  - --share=network
+modules:
+  - name: vita3k
+    builddir: true
+    no-make-install: true
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=RelWithDebInfo
+      - -DUSE_VITA3K_UPDATE=OFF
+      - -DVITA3K_FORCE_CUSTOM_BOOST=ON
+      - -DUSE_DISCORD_RICH_PRESENCE=OFF
+    post-install:
+      - install -Dm755 bin/Vita3K ${FLATPAK_DEST}/bin/Vita3K
+      - install -Dm644 bin/data/image/icon.png /app/share/icons/hicolor/128x128/apps/org.vita3k.Vita3K.png
+    sources:
+      - type: git
+        url: https://github.com/Vita3K/Vita3K.git
+        commit: 4ac8a41669c511a52598ab230665fe29a8df57fd
+      - type: file
+        path: org.vita3k.Vita3K.metainfo.xml
+      # - type: patch
+      #   path: remove-stdc++fs.patch

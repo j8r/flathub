@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop">
+  <id>org.vita3k.Vita3K</id>
+  <name>Vita3K</name>
+  <summary>Experimental PlayStation Vita emulator</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-2.0</project_license>
+  <description>
+    <p>
+      Vita3K is an experimental PlayStation Vita emulator for Linux and Windows.
+      The emulator currently runs some homebrew programs. It is also able to load some decrypted commercial games.
+    </p>
+  </description>
+
+  <url type="homepage">https://vita3k.org/</url>
+  <url type="bugtracker">https://github.com/Vita3K/Vita3K/issues</url>
+  <content_rating type="oars-1.1" />
+</component>
