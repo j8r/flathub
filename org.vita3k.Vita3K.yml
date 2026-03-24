@@ -1,6 +1,6 @@
 app-id: org.vita3k.Vita3K
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: Vita3K
 rename-desktop-file: vita3k.desktop
@@ -27,7 +27,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/Vita3K/Vita3K.git
-        commit: 4ac8a41669c511a52598ab230665fe29a8df57fd
+        commit: 99694acd967a47f462b73dd631bad7c9fde89fc0
       - type: file
         path: org.vita3k.Vita3K.metainfo.xml
       # - type: patch
