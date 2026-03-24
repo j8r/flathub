@@ -4,6 +4,7 @@ runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: Vita3K
 rename-desktop-file: vita3k.desktop
+
 finish-args:
   - --device=all
   - --filesystem=host:ro
@@ -11,7 +12,9 @@ finish-args:
   - --socket=x11
   - --share=ipc
   - --share=network
+
 modules:
+
   - name: vita3k
     builddir: true
     no-make-install: true
