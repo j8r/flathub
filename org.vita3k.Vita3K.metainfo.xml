@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
   <id>org.vita3k.Vita3K</id>
+  <launchable type="desktop-id">org.vita3k.Vita3K.desktop</launchable>
   <name>Vita3K</name>
   <summary>Experimental PlayStation Vita emulator</summary>
   <metadata_license>CC0-1.0</metadata_license>
@@ -13,6 +14,31 @@
   </description>
 
   <url type="homepage">https://vita3k.org/</url>
+  <url type="help">https://vita3k.org/quickstart.html</url>
   <url type="bugtracker">https://github.com/Vita3K/Vita3K/issues</url>
+  <url type="donation">https://ko-fi.com/Vita3K</url>
+  <url type="faq">https://vita3k.org/faq.html</url>
+  <url type="contribute">https://vita3k.org/#contribute</url>
+  <url type="vcs-browser">https://github.com/Vita3K/Vita3K</url>
   <content_rating type="oars-1.1" />
+
+  <screenshots>
+    <screenshot>
+      <image>https://github.com/Vita3K/Vita3K/blob/master/_readme/screenshots/P4G.png?raw=true</image>
+      <caption>Vita3K running Persona 4 Golden</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://github.com/Vita3K/Vita3K/blob/master/_readme/screenshots/A%20Rose%20in%20the%20Twilight.png?raw=true</image>
+      <caption>Vita3K running A Rose in the Twilight</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://github.com/Vita3K/Vita3K/blob/master/_readme/screenshots/Alone%20With%20You.png?raw=true</image>
+      <caption>Vita3K running Alone With You</caption>
+    </screenshot>
+    <screenshot>
+      <image>https://github.com/Vita3K/Vita3K/blob/master/_readme/screenshots/VA-11%20HALL-A.png?raw=true</image>
+      <caption>Vita3K running VA-11 HALL-A</caption>
+    </screenshot>
+  </screenshots>
+
 </component>
