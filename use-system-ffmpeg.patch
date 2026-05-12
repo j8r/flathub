@@ -1,0 +1,38 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b1336cea..4911cd9f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,8 +20,11 @@ set(CMAKE_CXX_STANDARD 20)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ set(CMAKE_OSX_DEPLOYMENT_TARGET 11.0)
++set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ 
+-# workaround for SDL due to cmake bug 
++option(USE_SYSTEM_FFMPEG "Prefer system ffmpeg instead of the prebuild one" OFF)
++
++# workaround for SDL due to cmake bug
+ # https://github.com/libsdl-org/SDL/issues/6454
+ # https://gitlab.kitware.com/cmake/cmake/-/issues/24104
+ if(APPLE)
+diff --git a/external/CMakeLists.txt b/external/CMakeLists.txt
+index 4404d314..9ccf85c0 100644
+--- a/external/CMakeLists.txt
++++ b/external/CMakeLists.txt
+@@ -272,7 +272,15 @@ target_include_directories(vma INTERFACE
+ if(ANDROID)
+ 	set(USE_STATIC_ANDROID_FFMPEG ON)
+ endif()
+-add_subdirectory(ffmpeg)
++if(USE_SYSTEM_FFMPEG)
++	add_library(ffmpeg INTERFACE)
++	message(STATUS "Using shared FFMPEG")
++	find_package(FFMPEG REQUIRED)
++	target_include_directories(ffmpeg SYSTEM INTERFACE ${FFMPEG_INCLUDE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/ffmpeg/include)
++	target_link_libraries(ffmpeg INTERFACE ${FFMPEG_LIBRARIES})
++else()
++	add_subdirectory(ffmpeg)
++endif()
+ 
+ if(APPLE OR NOT FORCE_BUILD_OPENSSL_MAC)
+ 	execute_process(

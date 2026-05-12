@@ -16,7 +16,7 @@ To uninstall: `flatpak uninstall -y org.vita3k.Vita3K`
 
 ## Build
 
-The `flatpak-builder` package is required.
+The `flatpak-builder` package is required, or using `flatpak run org.flatpak.Builder`.
 
 - Install the SDK
 

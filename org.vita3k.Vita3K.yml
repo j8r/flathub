@@ -3,6 +3,7 @@ runtime: org.freedesktop.Platform
 runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 command: Vita3K
+rename-desktop-file: xemu.desktop
 rename-desktop-file: vita3k.desktop
 
 finish-args:
@@ -14,7 +15,6 @@ finish-args:
   - --share=network
 
 modules:
-
   - name: vita3k
     builddir: true
     no-make-install: true
@@ -24,14 +24,22 @@ modules:
       - -DUSE_VITA3K_UPDATE=OFF
       - -DVITA3K_FORCE_CUSTOM_BOOST=ON
       - -DUSE_DISCORD_RICH_PRESENCE=OFF
+      - -DUSE_SYSTEM_FFMPEG=ON
     post-install:
       - install -Dm755 bin/Vita3K ${FLATPAK_DEST}/bin/Vita3K
+      - mv ../data ${FLATPAK_DEST}/bin
+      - mv ../vita3k/{shaders-builtin,lang} ${FLATPAK_DEST}/bin
       - install -Dm644 bin/data/image/icon.png /app/share/icons/hicolor/128x128/apps/org.vita3k.Vita3K.png
+      - desktop-file-install ../appimage/vita3k.desktop --dir $FLATPAK_DEST/share/applications
+      - desktop-file-edit --set-icon=Icon=org.vita3k.Vita3K $FLATPAK_DEST/share/applications/vita3k.desktop
     sources:
       - type: git
         url: https://github.com/Vita3K/Vita3K.git
-        commit: 99694acd967a47f462b73dd631bad7c9fde89fc0
+        commit: 9abe85f90ff04f397a817beef03f3fafd5e6900f
       - type: file
         path: org.vita3k.Vita3K.metainfo.xml
-      # - type: patch
-      #   path: remove-stdc++fs.patch
+      - type: patch
+        path: use-system-ffmpeg.patch
+      - type: file
+        dest: cmake
+        path: FindFFMPEG.cmake
