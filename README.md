@@ -20,7 +20,7 @@ The `flatpak-builder` package is required, or using `flatpak run org.flatpak.Bui
 
 - Install the SDK
 
-`flatpak install org.freedesktop.Platform/x86_64/23.08 org.freedesktop.Sdk/x86_64/23.08`
+`flatpak install org.kde.Platform/x86_64/6.10 org.kde.Sdk/x86_64/6.10`
 
 - Build Vita3K
 
